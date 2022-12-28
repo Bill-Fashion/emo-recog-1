@@ -30,7 +30,7 @@ for index, row in df.iterrows():
 num_features = 64
 num_labels = 7
 batch_size = 64
-epochs = 30
+epochs = 1
 width, height = 48, 48
 
 X_train = np.array(X_train, 'float32')
@@ -84,7 +84,7 @@ model.add(Dropout(0.2))
 
 model.add(Dense(num_labels, activation='softmax'))
 
-# model.summary()
+model.summary()
 
 # Compliling the model
 model.compile(loss=categorical_crossentropy,
@@ -105,5 +105,5 @@ model.fit(X_train, train_y,
 # Saving the  model
 fer_json = model.to_json()
 with open("fer.json", "w") as json_file:
-    json_file.write('models'/fer_json)
-model.save_weights("path_to_weight/fer.h5")
+    json_file.write(fer_json)
+model.save_weights('./fer.h5')
